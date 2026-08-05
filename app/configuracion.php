@@ -21,7 +21,7 @@
 		case 'www.pllogistic.com':
         case 'tedyc.com':
 		case 'www.tedyc.com':
-			define( 'DIR_CAMINO'	,	'PL/' ); // Nombre de la carperta donde se guarda todo el proyecto
+			define( 'DIR_CAMINO'	,	'pl/' ); // Nombre de la carperta donde se guarda todo el proyecto
 			define( 'SIS_URL'		,	'http://'.$_SERVER['HTTP_HOST'].'/'.DIR_CAMINO );
 			break;
 
