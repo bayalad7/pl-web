@@ -15,6 +15,12 @@
 	// Variables constantes comerciales de la aplicación
 	define( 'IVA' , 1.16 );
 
+	// Protocolo real de la petición (evita contenido mixto http/https).
+	$sisProtocolo	=	( ( ! empty( $_SERVER['HTTPS'] ) && $_SERVER['HTTPS'] !== 'off' )
+						|| ( ! empty( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https' )
+						|| ( ! empty( $_SERVER['SERVER_PORT'] ) && $_SERVER['SERVER_PORT'] == 443 ) )
+						? 'https://' : 'http://';
+
 	switch( $_SERVER["HTTP_HOST"] )
 	{
 		case 'pllogistic.com':
@@ -22,20 +28,20 @@
         case 'tedyc.com':
 		case 'www.tedyc.com':
 			define( 'DIR_CAMINO'	,	'pl/' ); // Nombre de la carperta donde se guarda todo el proyecto
-			define( 'SIS_URL'		,	'http://'.$_SERVER['HTTP_HOST'].'/'.DIR_CAMINO );
+			define( 'SIS_URL'		,	$sisProtocolo.$_SERVER['HTTP_HOST'].'/'.DIR_CAMINO );
 			break;
 
 		case 'pl-logistics.tedyc.com':
 		case 'www.pl-logistics.tedyc.com':
 			define( 'DIR_CAMINO'	,	'' ); // Nombre de la carperta donde se guarda todo el proyecto
-			define( 'SIS_URL'		,	'http://'.$_SERVER['HTTP_HOST'].'/'.DIR_CAMINO );
+			define( 'SIS_URL'		,	$sisProtocolo.$_SERVER['HTTP_HOST'].'/'.DIR_CAMINO );
 			break;
 
         case '10.0.0.4':
 		case 'localhost':
 		case 'localhost:8080':
 			define( 'DIR_CAMINO'	,	'Proyectos/PL/' ); // Nombre de la carperta donde se guarda todo el proyecto
-			define( 'SIS_URL'		,	'http://'.$_SERVER['HTTP_HOST'].'/'.DIR_CAMINO );
+			define( 'SIS_URL'		,	$sisProtocolo.$_SERVER['HTTP_HOST'].'/'.DIR_CAMINO );
 			break;
 	}
 

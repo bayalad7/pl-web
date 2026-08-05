@@ -123,13 +123,11 @@
 					.navbar .navbar-nav {
 						font-family: "Poppins-Regular" !important;
 						color:#43637C;
-						// text-transform: none;
 						text-transform: uppercase;
 					}
 					.navbar-default .navbar-nav>li>a{
 						font-family: "Poppins-Regular" !important;
 						color:#43637C;
-						// font-size: 18px;
 						font-size: 16px;
 					}
 					.navbar-default .navbar-nav>.dropdown.open>a:before {
