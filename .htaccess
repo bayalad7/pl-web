@@ -1,0 +1,38 @@
+# Zona de tiempo por defecto #
+# SetEnv TZ America/Monterrey
+
+Options -Indexes
+Options -MultiViews
+Options +SymLinksIfOwnerMatch
+RewriteEngine on
+
+#Error 403 Acceso denegado a los directorios/archivos del servidor
+ErrorDocument 403 /app/403.php
+#Error 404 Url no encontrada / pagina no existe
+ErrorDocument 404 /app/404.php
+#Error 500 Falla del servidor / el servidor es incapaz de determinar el tipo de error de la URL
+ErrorDocument 500 /app/500.php
+
+
+# Reglas #
+RewriteRule ^salir/$ app/salir.php [L,NC]
+
+#####################################################################
+###################################### Variables GET de la aplicación
+#####################################################################
+# Variable GET 1 - appProyecto    [ Carpeta (app-mod)             ] #
+# Variable GET 2 - appModulo      [ Módulo de la aplicación       ] #
+# Variable GET 3 - appControlador [ Controlador del módulo        ] #
+# Variable GET 4 - v1             [ Variable 1 para la aplicación ] #
+# Variable GET 5 - v2             [ Variable 2 para la aplicación ] #
+# Variable GET 6 - v3             [ Variable 3 para la aplicación ] #
+# Variable GET 7 - v4             [ Variable 4 para la aplicación ] #
+# Variable GET 8 - v5             [ Variable 5 para la aplicación ] #
+# Variable GET 9 - v6             [ Variable 6 para la aplicación ] #
+#####################################################################
+
+RewriteRule ^([a-zA-Z0-9\-_.]+)/(?:([a-zA-Z0-9\-_.]+/)?)(?:([a-zA-Z0-9\-_.]+/)?)(?:([a-zA-Z0-9\-_.]+/)?)(?:([a-zA-Z0-9\-_.]+/)?)(?:([a-zA-Z0-9\-_.]+/)?)(?:([a-zA-Z0-9\-_.]+/)?)(?:([a-zA-Z0-9\-_.]+/)?)(?:([a-zA-Z0-9\-_.]+/)?)$ app/escenario/index.php?appProyecto=$1&appModulo=$2&appControlador=$3&v1=$4&v2=$5&v3=$6&v4=$7&v5=$8&v6=$9 [L,NC,QSA]
+
+RewriteRule ^(wsv|wsdl)/([a-zA-Z]+)/$ app/escenario/index.php?sysType=$1&sysModule=$2
+
+AddCharset utf-8 .txt .html .htm .php .wsdl
